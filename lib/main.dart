@@ -43,7 +43,7 @@ class _MyHomePageState extends State<MyHomePage> {
   Future<void> _getBatteryLevel() async {
     //Method channel that will be use for communicating with native code
     //Method channel identifier should be like an url
-    //Method channel identifior should be unique in app and should not mathch to other Method Channel identifier in the app
+    //Method channel identifior should be unique in the app
     const platform = MethodChannel('com.flutter.dev/battery');
     try {
       //Invoke method are use to send message to the method channel which already established a communication with native side
@@ -56,6 +56,12 @@ class _MyHomePageState extends State<MyHomePage> {
         _batteryLevel = null;
       });
     }
+  }
+
+  @override
+  void initState() {
+    _getBatteryLevel();
+    super.initState();
   }
 
   @override
